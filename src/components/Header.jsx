@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Header.css'; // Adjust the path if necessary
 
 const Header = () => {
@@ -12,6 +13,8 @@ const Header = () => {
         <nav className="header-nav">
           <a href="#contact-us" className="nav-item">Contact Us</a>
           <a href="#about-us" className="nav-item">About Us</a>
+          <Link to="/signin" className="nav-item">Sign In</Link>
+
         </nav>
         
         <div className="profile-photo">
