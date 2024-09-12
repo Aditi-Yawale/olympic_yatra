@@ -1,0 +1,66 @@
+.event-schedule-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .date-selector {
+    margin-bottom: 20px;
+  }
+  
+  .date-input {
+    margin-right: 10px;
+    padding: 5px;
+  }
+  
+  .calendar-input {
+    padding: 5px;
+  }
+  
+  .event-section {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .event-category {
+    width: 48%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    margin-top: 0;
+  }
+  
+  .live-badge {
+    display: inline-block;
+    background-color: #ff0;
+    padding: 2px 6px;
+    margin-left: 10px;
+    border-radius: 3px;
+  }
+  
+  .event-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .athlete {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .flag {
+    font-size: 1.5em; 
+    margin-right: 10px;
+  }
+  

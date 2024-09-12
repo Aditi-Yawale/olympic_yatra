@@ -1,0 +1,71 @@
+/* Container for the header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: white; /* Background color of the header */
+    border-bottom: 1px solid #ccc; /* Optional: border at the bottom */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure the header is above other content */
+  }
+  
+  /* Style for the left section (logo and profile text) */
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Style for the logo image */
+  .logo {
+    width: 40px; /* Adjust size as needed */
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  /* Style for the profile text */
+  .profile-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  /* Style for the right section (navigation and profile photo) */
+  .header-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Style for the navigation links */
+  .header-nav {
+    display: flex;
+    gap: 20px; /* Space between links */
+    margin-right: 20px; /* Space between navigation and profile photo */
+  }
+  
+  .nav-item {
+    text-decoration: none;
+    color: #333; /* Text color for links */
+    font-size: 14px;
+  }
+  
+  .nav-item:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  /* Style for the profile photo section */
+  .profile-photo {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Style for the profile photo image */
+  .profile-img {
+    width: 40px; /* Adjust size as needed */
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
