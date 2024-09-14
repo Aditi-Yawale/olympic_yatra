@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import ProfilePicture from './ProfilePicture';
 import Details from './Details';
+import Sport from './Sport';
 import './ProfilePage.css'; 
 
 const ProfilePage = () => {
@@ -14,6 +15,7 @@ const ProfilePage = () => {
         </div>
         <div className="right-section">
           <Details />
+          <Sport />
         </div>
       </div>
     </div>
