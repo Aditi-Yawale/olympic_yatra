@@ -22,9 +22,10 @@
     max-width: 1200px;
     background-color: white;
     padding: 20px;
-    margin: 20px auto; /* Centering the container */
+    margin: 20px; /* Centering the container */
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 80px;
   }
   
   .image-container {
@@ -32,6 +33,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
   }
   
   .image-container img {
@@ -46,7 +48,7 @@
     padding: 40px;
     background-color: white;
     border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
   }
   
   h2 {
