@@ -6,7 +6,8 @@ import LiveEvent from './components/LiveEvent';
 import Sports from './components/Sports';
 import AtheletePerformance from './components/AtheletePerformance';
 import Header from './components/Header';
-import SignIn from './components/SignIn'; // Import your Sign In component
+import SignIn from './components/SignIn';
+import ProfilePage from './components/ProfilePage'; // Import ProfilePage component
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/profile" element={<ProfilePage />} /> {/* Add ProfilePage route */}
         <Route path="/" element={
           <div className="content-grid">
             <div className="medal-tally"><MedalTally /></div>
@@ -24,7 +26,6 @@ function App() {
             <div className="athelete-performance"><AtheletePerformance /></div>
           </div>
         } />
-        {/* Optionally, add a catch-all route */}
         <Route path="*" element={
           <div className="content-grid">
             <div className="medal-tally"><MedalTally /></div>
