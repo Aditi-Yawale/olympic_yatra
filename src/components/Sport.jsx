@@ -11,16 +11,29 @@ const Sport = () => {
       <div className="sport-info">
         <div className="sport-box">
           <span className="sport-label">Sport:</span>
-          <span className="sport-value">Basketball</span> {/* Example Sport */}
+          <span className="sport-value">Athletics</span> {/* Example Sport */}
         </div>
         <div className="category-box">
           <span className="category-label">Category:</span>
-          <span className="category-value">Men</span> {/* Example Category */}
+          <span className="category-value">Men's</span> {/* Example Category */}
         </div>
       </div>
       <div className="performance-section">
         <h4>Your Performance</h4>
-        {/* Add performance details here */}
+        <div className="performance-details">
+          <div className="performance-item">
+            <span className="performance-label">100 m Sprint:</span>
+            <span className="performance-value">10.09 secs</span> {/* Example Performance */}
+          </div>
+          <div className="performance-item">
+            <span className="performance-label">200 m Sprint:</span>
+            <span className="performance-value">20.20 secs</span> {/* Example Performance */}
+          </div>
+          <div className="performance-item">
+            <span className="performance-label">4 x 100 m Relay:</span>
+            <span className="performance-value">39.27 secs</span> {/* Example Performance */}
+          </div>
+        </div>
       </div>
     </div>
   );
