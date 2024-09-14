@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from './Header'; // Import the Header component
-import './SignIn.css'; // Importing the new CSS
+import './Register.css'; // Importing the new CSS
 
-const SignIn = () => {
+const Register = () => {
   return (
     <div>
       <Header />
@@ -39,4 +39,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default Register;
