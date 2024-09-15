@@ -9,7 +9,8 @@ import Header from './components/Header';
 import Register from './components/Register';
 import ProfilePage from './components/ProfilePage'; // Import ProfilePage component
 import Login from './components/Login';
-import Signup from './components/Signup'
+import Signup from './components/Signup';
+
 import './App.css';
 
 function App() {

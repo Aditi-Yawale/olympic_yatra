@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './Header'; // Import the Header component
 import './Register.css'; // Importing the new CSS
 
 const Register = () => {
+  const [buttonText, setButtonText] = useState('Register as an Athlete');
+
+  const handleClick = () => {
+    setButtonText('Registered Successfully!');
+  };
+
   return (
     <div>
       <Header />
@@ -28,10 +34,11 @@ const Register = () => {
             <label>Sport</label>
             <input type="text" placeholder="Enter your sport" />
             
-            <label>Domain</label>
-            <input type="text" placeholder="Enter your domain" />
+           
             
-            <button type="submit">Register as an Athlete</button>
+            <button type="button" onClick={handleClick}>
+              {buttonText}
+            </button>
           </form>
         </div>
       </div>
