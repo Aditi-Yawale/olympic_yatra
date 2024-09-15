@@ -46,6 +46,8 @@ html, body {
   grid-gap: 20px;
   margin-top: 80px;
   margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 
   /* Let the grid expand naturally */
   min-height: 100%; /* Ensures the grid can grow */

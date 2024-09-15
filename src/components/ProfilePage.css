@@ -1,19 +1,18 @@
-/* Container for profile and sport sections */
+/* Container for profile, medical history, and coach sections */
 .profile-page-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: flex; /* Align sections horizontally */
+    gap: 15px; /* Space between sections */
     padding: 20px;
     margin-top: 80px;
-    gap: 20px; /* Adds space between Profile Picture, Details, and Sport */
+    flex-wrap: wrap; /* Allow wrapping if necessary */
 }
 
 /* Profile picture section */
 .profile-picture-container {
-    width: 279px; /* Adjusted width for profile picture */
-    height: 405px;
+    width: 280px; /* Adjusted width */
+    height: 400px; /* Adjusted height */
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
+    flex-direction: column;
     align-items: center;
     background-color: #fff;
     padding: 20px;
@@ -30,8 +29,7 @@
 
 .profile-picture img {
     border-radius: 12px;
-    width: 237px;
-    height: 336px;
+    width: 100%; /* Adjusted width for responsiveness */
     height: auto;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin-top: 10px;
@@ -39,22 +37,18 @@
 
 /* Details section */
 .details-container {
-    width: 507px;
-    height: 405px; /* Adjusted width */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex: 1; /* Make it flexible */
+    min-width: 300px; /* Minimum width to ensure proper display */
     background-color: #fff;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Add grid layout for details */
 .details-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 columns layout */
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px; /* Adjusted gap */
 }
 
 .details-item {
@@ -80,9 +74,8 @@
 
 /* Sport section */
 .sport-container {
-    width: 588px;
-    height: 405px;
-    max-width: max-content; 
+    flex: 1; /* Make it flexible */
+    min-width: 300px; /* Minimum width to ensure proper display */
     background-color: #fff;
     padding: 20px;
     border-radius: 12px;
@@ -129,7 +122,6 @@
     color: #333;
 }
 
-/* Performance section */
 .performance-section {
     margin-top: 20px;
 }
@@ -143,7 +135,7 @@
 .performance-details {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Adds space between performance items */
+    gap: 10px;
 }
 
 .performance-item {
@@ -166,28 +158,57 @@
 
 /* Experience section */
 .experience-container {
-    display: flex; /* Use flexbox for horizontal alignment */
-    gap: 20px; /* Space between each experience box */
-    width: 538px;
-    height: 320px;
+    flex: 1; /* Allow it to grow and fill available space */
+    min-width: 250px; /* Minimum width for each section */
     background-color: #fff;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px; /* Add some space below the Profile Picture */
+    display: flex;
+    flex-direction: column; /* Stack header and boxes vertically */
 }
 
+/* Header styling for Experience */
+.experience-header {
+    display: flex;
+    justify-content: space-between; /* Align header and icon on one line */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.experience-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.experience-header .edit-icon {
+    cursor: pointer;
+    font-size: 18px;
+    color: #888;
+}
+
+/* Container for the experience boxes */
+.experience-box-container {
+    display: flex; /* Align boxes horizontally */
+    gap: 15px; /* Add gap between experience boxes */
+    flex-wrap: wrap; /* Allow wrapping if necessary */
+}
+
+/* Experience boxes styling */
 .experience-box {
-    flex: 1; /* Make each box take equal space */
-    max-width: max-content;
-    width: 153px;
+    flex: 1;
+    min-width: 150px; /* Minimum width for better fit */
+    max-width: 300px; /* Optional: Limit the maximum width for better layout control */
     height: 245px;
     background-color: inherit;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Keep the content of each box stacked vertically */
 }
 
+/* Header inside each box */
 .experience-box h4 {
     font-size: 16px;
     font-weight: bold;
@@ -202,5 +223,130 @@
 }
 
 .experience-details p {
-    margin: 0 0 10px; /* Space between lines */
+    margin: 0 0 10px;
+}
+
+/* Medical History Container */
+.medical-history-container {
+    flex: 1; /* Allow it to grow and fill available space */
+    min-width: 250px; /* Minimum width for each section */
+    background-color: #f77e76; /* Background color for the entire container */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Include padding in width */
+}
+
+/* Header for Medical History with edit icon */
+.medical-history-header {
+    display: flex;
+    justify-content: space-between; /* Align header text and icon on the same row */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.medical-history-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.medical-history-header .edit-icon {
+    cursor: pointer;
+    font-size: 18px;
+    color: #888;
+}
+
+/* Medical History Grid to display 4 sections in 2x2 layout */
+.medical-history-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Create two equal columns */
+    gap: 15px; /* Adjusted gap */
+}
+
+/* Individual Medical History Box */
+.medical-history-box {
+    background-color: #fff; /* White background for each box */
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Section Headers inside the boxes */
+.medical-history-box h4 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Medical history details */
+.medical-history-box p {
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Container for the Coach section */
+.coach-container {
+    flex: 1; /* Allow it to grow and fill available space */
+    min-width: 250px; /* Minimum width for each section */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Include padding in width */
+}
+
+/* Header section with coach image and details */
+.coach-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.coach-image {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.coach-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.coach-details h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.coach-details p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Messages section */
+.coach-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Individual message boxes */
+.message-box {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Blue background for the first message box */
+.blue-background {
+    background-color: #00bfff;
+    color: #fff;
 }
