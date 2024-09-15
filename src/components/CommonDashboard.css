@@ -1,0 +1,310 @@
+/* CommonDashboard.css */
+
+.live-event-container {
+    width: 100%;
+    max-width: 1200px; /* Limits the max width to ensure it doesn’t stretch too much */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+.live-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.live-event-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.live-event-card {
+    flex: 1 1 calc(33.333% - 20px);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.event-icon {
+    font-size: 2rem;
+    margin-right: 15px;
+}
+
+.event-details {
+    flex: 1;
+}
+
+.event-details h4 {
+    font-size: 18px;
+    margin: 0;
+    color: #444;
+}
+
+.event-details p {
+    margin: 5px 0 0;
+    color: #666;
+}
+
+.watch-now {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.watch-now:hover {
+    text-decoration: underline;
+}
+
+.see-more-btn-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.see-more-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.see-more-btn:hover {
+    background-color: #0056b3;
+}
+
+.medal-tally-container {
+    padding: 20px;
+    background-color: inherit;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin-top: 20px;
+    gap: 20px; /* Adjusted to better fit within a flexible layout */
+    width: 100%;
+    max-width: 300px; /* Adjust width based on design requirements */
+    height: auto; /* Adjust height based on content */
+    box-sizing: border-box; /* Ensure padding and border are included in width/height */
+}
+
+.medal-tally-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.medal-tally-container h2 {
+    margin: 0;
+}
+
+.show-all-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.show-all-btn:hover {
+    background-color: #0056b3;
+}
+
+.medal-tally-list {
+    list-style: none;
+    padding: 0;
+}
+
+.medal-tally-header-row,
+.medal-tally-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd; /* Consistent border */
+    padding: 10px 0;
+}
+
+.medal-tally-header-row {
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+}
+
+.country-name {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.medal-counts {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+}
+
+.medal-count {
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+}
+
+.medal-label {
+    text-align: center;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+.event-schedule-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    gap: 20px; /* Adjusted to better fit within a flexible layout */
+    width: 100%;
+    max-width: 800px; /* Adjust width based on design requirements */
+    height: auto; /* Adjust height based on content */
+    box-sizing: border-box; /* Ensure padding and border are included in width/height */
+}
+
+.date-selector {
+    margin-bottom: 20px;
+}
+
+.date-input {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.calendar-input {
+    padding: 5px;
+}
+
+.event-section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.event-category {
+    width: 100%;
+    max-width: 48%; /* Adjust width based on design requirements */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.live-badge {
+    display: inline-block;
+    background-color: #ff0;
+    padding: 2px 6px;
+    margin-left: 10px;
+    border-radius: 3px;
+}
+
+.event-list {
+    list-style: none;
+    padding: 0;
+}
+
+.athlete {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.flag {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.live-event-container {
+    background-color: #f77e76;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px; /* Adjust width based on design requirements */
+    height: auto; /* Adjust height based on content */
+}
+
+.live-title {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.live-event-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.live-event-card {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.event-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.event-details h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.event-details p {
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+}
+
+.watch-now {
+    color: #1e90ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.see-more-btn-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.see-more-btn {
+    background-color: #ffffff;
+    color: #f77e76;
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.see-more-btn:hover {
+    background-color: #f3f3f3;
+}

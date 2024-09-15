@@ -1,5 +1,5 @@
 import React from 'react';
-import './LiveEvent.css'; // Add custom styles
+import './CommonDashboard.css'; // Add custom styles
 
 const LiveEvent = () => {
   const events = [

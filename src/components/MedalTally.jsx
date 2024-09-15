@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './MedalTally.css';
+import './CommonDashboard.css';
 
 const allCountries = [
   { country: 'United States ', gold: 30, silver: 25, bronze: 20 },
