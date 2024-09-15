@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./EventSchedule.css";
+import "./CommonDashboard.css";
 
 const EventSchedule = () => {
   const [selectedDate, setSelectedDate] = useState("02/09/2024");
