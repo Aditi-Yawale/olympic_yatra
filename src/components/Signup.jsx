@@ -27,6 +27,9 @@ const navigate = useNavigate();
           <form onSubmit = {handleSignup}>
             <label>Username</label>
             <input type="text" placeholder="Enter your username" />
+
+            <label>Email ID</label>
+            <input type="password" placeholder="Enter your email id" />
             
             <label>Password</label>
             <input type="password" placeholder="Enter your password" />
