@@ -1,13 +1,11 @@
-/* CommonDashboard.css */
-
 .live-event-container {
-    width: 100%; /* Full width */
-    max-width: 100%; /* Maximum width for desktop */
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 8px;
-    height: auto; /* Adjusts dynamically based on content */
+    height: auto;
 }
 
 .live-title {
@@ -32,7 +30,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
-    min-width: 280px; /* Prevents cards from shrinking too much */
+    min-width: 280px;
 }
 
 .event-icon {
@@ -90,9 +88,9 @@
     border: 2px solid #ddd;
     border-radius: 10px;
     margin-top: 20px;
-    width: 100%; /* Full width */
-    max-width: 100%; /* Fit to desktop */
-    height: auto; /* Adjust based on content */
+    width: 100%; 
+    max-width: 100%; 
+    height: auto;
     box-sizing: border-box;
 }
 
@@ -168,9 +166,9 @@
     font-family: Arial, sans-serif;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Full width */
-    max-width: 100%; /* Fit to desktop */
-    height: auto; /* Adjust height dynamically */
+    width: 100%; 
+    max-width: 100%; 
+    height: auto; 
     box-sizing: border-box;
 }
 
@@ -195,7 +193,7 @@
 
 .event-category {
     width: 100%;
-    max-width: 48%; /* Adjust for responsiveness */
+    max-width: 48%;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -240,8 +238,8 @@ h2 {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Full width for desktop */
-    height: auto; /* Dynamic height */
+    width: 100%;
+    height: auto;
 }
 
 .live-title {
