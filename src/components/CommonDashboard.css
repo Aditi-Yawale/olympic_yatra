@@ -1,14 +1,13 @@
 /* CommonDashboard.css */
 
 .live-event-container {
-    width: 100%;
-    max-width: 1200px; /* Limits the max width to ensure it doesn’t stretch too much */
+    width: 100%; /* Full width */
+    max-width: 100%; /* Maximum width for desktop */
     margin: 0 auto;
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 8px;
-    width: 299px;
-    height: 405px;
+    height: auto; /* Adjusts dynamically based on content */
 }
 
 .live-title {
@@ -33,6 +32,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
+    min-width: 280px; /* Prevents cards from shrinking too much */
 }
 
 .event-icon {
@@ -90,11 +90,10 @@
     border: 2px solid #ddd;
     border-radius: 10px;
     margin-top: 20px;
-    gap: 20px; /* Adjusted to better fit within a flexible layout */
-    width: 290px;
-    max-width: 300px; /* Adjust width based on design requirements */
-    height: 400px; /* Adjust height based on content */
-    box-sizing: border-box; /* Ensure padding and border are included in width/height */
+    width: 100%; /* Full width */
+    max-width: 100%; /* Fit to desktop */
+    height: auto; /* Adjust based on content */
+    box-sizing: border-box;
 }
 
 .medal-tally-header {
@@ -132,7 +131,7 @@
     grid-template-columns: 2fr 1fr 1fr 1fr;
     align-items: center;
     margin-bottom: 10px;
-    border-bottom: 1px solid #ddd; /* Consistent border */
+    border-bottom: 1px solid #ddd;
     padding: 10px 0;
 }
 
@@ -169,11 +168,10 @@
     font-family: Arial, sans-serif;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    gap: 20px; /* Adjusted to better fit within a flexible layout */
-    width: 796px;
-    max-width: 800px; /* Adjust width based on design requirements */
-    height: 405px; /* Adjust height based on content */
-    box-sizing: border-box; /* Ensure padding and border are included in width/height */
+    width: 100%; /* Full width */
+    max-width: 100%; /* Fit to desktop */
+    height: auto; /* Adjust height dynamically */
+    box-sizing: border-box;
 }
 
 .date-selector {
@@ -192,12 +190,12 @@
 .event-section {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    flex-wrap: wrap;
 }
 
 .event-category {
     width: 100%;
-    max-width: 48%; /* Adjust width based on design requirements */
+    max-width: 48%; /* Adjust for responsiveness */
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -242,9 +240,8 @@ h2 {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 300px; /* Adjust width based on design requirements */
-    height: auto; /* Adjust height based on content */
+    width: 100%; /* Full width for desktop */
+    height: auto; /* Dynamic height */
 }
 
 .live-title {
