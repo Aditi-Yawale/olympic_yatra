@@ -5,7 +5,11 @@ import axios from 'axios';
 
 const Signup = () => {
     const navigate = useNavigate();
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 552cc221612f6f21b8ab91cd68ae444c0102727a
     // State to track form data
     const [formData, setFormData] = useState({
         username: '',
@@ -13,6 +17,7 @@ const Signup = () => {
         dob: '',
         gender: '',
         password: '',
+<<<<<<< HEAD
         confirmPassword: '',
         otp: ''
     });
@@ -20,6 +25,13 @@ const Signup = () => {
     // State to track the current step (1, 2, 3, or 4)
     const [step, setStep] = useState(1);
     const [otpSent, setOtpSent] = useState(false);
+=======
+        confirmPassword: ''
+    });
+
+    // State to track the current step (1, 2, or 3)
+    const [step, setStep] = useState(1);
+>>>>>>> 552cc221612f6f21b8ab91cd68ae444c0102727a
 
     // Handle form input changes
     const handleChange = (e) => {
@@ -29,6 +41,7 @@ const Signup = () => {
         });
     };
 
+<<<<<<< HEAD
     // Handle moving to the next step
     const handleNext = async () => {
         // Make sure OTP is shown only if OTP is sent
@@ -51,20 +64,32 @@ const Signup = () => {
             }
         } else {
             // Move to next step
+=======
+    // Handle the next button click to move to the next step
+    const handleNext = () => {
+        if (step < 3) {
+>>>>>>> 552cc221612f6f21b8ab91cd68ae444c0102727a
             setStep(step + 1);
         }
     };
 
+<<<<<<< HEAD
     // Handle the signup submission
     const handleSignup = async (e) => {
         e.preventDefault();
 
+=======
+    // Handle the signup submission on the last step
+    const handleSignup = (e) => {
+        e.preventDefault();
+>>>>>>> 552cc221612f6f21b8ab91cd68ae444c0102727a
         // Check if passwords match
         if (formData.password !== formData.confirmPassword) {
             alert("Passwords do not match");
             return;
         }
 
+<<<<<<< HEAD
         try {
             // Send signup data to backend
             await axios.post('http://localhost:3001/register', {
@@ -90,6 +115,24 @@ const Signup = () => {
         } catch (error) {
             console.error('There was an error!', error);
         }
+=======
+        // Send signup data to backend
+        axios.post('http://localhost:3001/register', {
+            username: formData.username,
+            email: formData.email,
+            dob: formData.dob,
+            gender: formData.gender,
+            password: formData.password
+        })
+        .then(response => {
+            console.log(response);
+            // After successful signup, navigate to the login page
+            navigate('/login');
+        })
+        .catch(error => {
+            console.error('There was an error!', error);
+        });
+>>>>>>> 552cc221612f6f21b8ab91cd68ae444c0102727a
     };
 
     // Handle login redirection
@@ -107,7 +150,11 @@ const Signup = () => {
                 <div className="form-container">
                     <h2>Sign up</h2>
 
+<<<<<<< HEAD
                     {/* Conditionally render form based on the current step */}
+=======
+                    {/* Conditionally render form based on current step */}
+>>>>>>> 552cc221612f6f21b8ab91cd68ae444c0102727a
                     <form onSubmit={handleSignup}>
                         {step === 1 && (
                             <>
@@ -128,7 +175,11 @@ const Signup = () => {
                                     value={formData.email}
                                     onChange={handleChange}
                                 />
+<<<<<<< HEAD
 
+=======
+                                
+>>>>>>> 552cc221612f6f21b8ab91cd68ae444c0102727a
                                 <button type="button" onClick={handleNext}>
                                     Next
                                 </button>
@@ -152,7 +203,11 @@ const Signup = () => {
                                     <option value="female">Female</option>
                                     <option value="other">Other</option>
                                 </select>
+<<<<<<< HEAD
 
+=======
+                                
+>>>>>>> 552cc221612f6f21b8ab91cd68ae444c0102727a
                                 <button type="button" onClick={handleNext}>
                                     Next
                                 </button>
@@ -179,6 +234,7 @@ const Signup = () => {
                                     onChange={handleChange}
                                 />
 
+<<<<<<< HEAD
                                 <button type="submit">Submit</button>
                             </>
                         )}
@@ -198,6 +254,9 @@ const Signup = () => {
                                 <button type="button" onClick={handleNext}>
                                     Verify OTP
                                 </button>
+=======
+                                <button type="submit">Sign Up</button>
+>>>>>>> 552cc221612f6f21b8ab91cd68ae444c0102727a
                             </>
                         )}
                     </form>

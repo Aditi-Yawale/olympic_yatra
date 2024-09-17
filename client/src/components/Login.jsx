@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from './Header';
+=======
+import Header from './Header'; // Import the Header component
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+>>>>>>> 552cc221612f6f21b8ab91cd68ae444c0102727a
 
 const Login = () => {
     const [selectedTab, setSelectedTab] = useState('Athlete'); // Athlete login is default
@@ -15,13 +21,18 @@ const Login = () => {
 
     const handleSignUpClick = () => {
         // Navigate to the signup page
+<<<<<<< HEAD
         navigate('/signup');
+=======
+        navigate('/signup'); // Adjust the path if necessary
+>>>>>>> 552cc221612f6f21b8ab91cd68ae444c0102727a
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         axios.post('http://localhost:3001/login', {
+<<<<<<< HEAD
             email: username,
             password: password
         })
@@ -29,6 +40,17 @@ const Login = () => {
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
                 navigate('/athletedashboard'); // Navigate to Athlete Dashboard on successful login
+=======
+            email: username, // Adjust based on your login form
+            password: password
+        })
+        .then(response => {
+            console.log(response);
+            if (response.data.token) {
+                // Save token and navigate to the home page
+                localStorage.setItem('token', response.data.token);
+                navigate('/home');
+>>>>>>> 552cc221612f6f21b8ab91cd68ae444c0102727a
             } else {
                 alert('Invalid credentials');
             }
@@ -88,7 +110,11 @@ const Login = () => {
                         Not already a user?{' '}
                         <span
                             style={{ color: 'blue', cursor: 'pointer', textDecoration: 'underline' }}
+<<<<<<< HEAD
                             onClick={handleSignUpClick}
+=======
+                            onClick={handleSignUpClick} // Call handleSignUpClick on click
+>>>>>>> 552cc221612f6f21b8ab91cd68ae444c0102727a
                         >
                             Sign up
                         </span>
@@ -99,4 +125,8 @@ const Login = () => {
     );
 };
 
+<<<<<<< HEAD
 export default Login;
+=======
+export default Login;
+>>>>>>> 552cc221612f6f21b8ab91cd68ae444c0102727a
