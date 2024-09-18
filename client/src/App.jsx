@@ -7,12 +7,9 @@ import Sports from './components/Sports';
 import AtheletePerformance from './components/AtheletePerformance';
 import Header from './components/Header';
 import Register from './components/Register';
-
-import ProfilePage from './components/ProfilePage';
+import ProfilePage from './components/ProfilePage'; // Import ProfilePage component
 import Login from './components/Login';
 import Signup from './components/Signup';
-import AthleteDashboard from './components/AthleteDashboard'; // Ensure this import is correct
-
 
 import './App.css';
 
@@ -24,9 +21,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/athletedashboard" element={<AthleteDashboard />} />
-        <Route path="/athletedashboard" element={<AthleteDashboard />} />
+        <Route path="/profile" element={<ProfilePage />} /> {/* Add ProfilePage route */}
         <Route path="/" element={
           <div className="content-grid">
             <div className="medal-tally"><MedalTally /></div>
