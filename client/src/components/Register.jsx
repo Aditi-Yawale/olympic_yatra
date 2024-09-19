@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Header from './Header'; // Import the Header component
+import Header4 from './Header4'; // Import the Header component
 import './Register.css'; // Importing the new CSS
 
 const Register = () => {
@@ -11,7 +11,7 @@ const Register = () => {
 
   return (
     <div>
-      <Header />
+      <Header4 />
       <div className="container">
         <div className="image-container">
           <img src="paris_olympic.png" alt="Olympics Image" />

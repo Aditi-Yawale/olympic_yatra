@@ -90,6 +90,7 @@
     margin-top: 20px;
     width: 100%; 
     max-width: 100%; 
+    width:auto;
     height: auto;
     box-sizing: border-box;
 }
@@ -304,4 +305,9 @@ h2 {
 
 .see-more-btn:hover {
     background-color: #f3f3f3;
+}
+
+.athlete-performance-container {
+    width: auto;
+    height: auto;
 }
