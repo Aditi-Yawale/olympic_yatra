@@ -5,7 +5,7 @@ import Header from './Header';
 
 const Login = () => {
     const [selectedTab, setSelectedTab] = useState('Athlete'); // Athlete login is default
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate(); // Initialize useNavigate
 
@@ -21,8 +21,8 @@ const Login = () => {
         e.preventDefault();
 
         // Call the backend for login
-        axios.post('mongodb://localhost:27017/olympics', {
-            email: username,
+        axios.post('http://localhost:3001/login', {
+            email: email,
             password: password
         })
         .then(response => {
@@ -79,12 +79,12 @@ const Login = () => {
                     {/* Render form based on selected tab */}
                     <h2>{selectedTab} Login</h2>
                     <form onSubmit={handleSubmit}>
-                        <label>Username</label>
+                        <label>Email</label>
                         <input
-                            type="text"
-                            placeholder={`Enter your ${selectedTab.toLowerCase()} username`}
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            type="email"
+                            placeholder={`Enter your ${selectedTab.toLowerCase()} email`}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
 
                         <label>Password</label>

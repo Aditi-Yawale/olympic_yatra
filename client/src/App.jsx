@@ -10,6 +10,7 @@ import Register from './components/Register';
 import ProfilePage from './components/ProfilePage'; // Import ProfilePage component
 import Login from './components/Login';
 import Signup from './components/Signup';
+import CoachDashboard from './components/CoachDashboard';
 import AthleteDashboard from './components/AthleteDashboard';
 
 import './App.css';
@@ -20,6 +21,9 @@ function App() {
     <Router>
       <Header />
       <Routes>
+      
+        <Route path="/coachdashboard" element={<CoachDashboard />} />
+        <Route path="/athletedashboard" element={<AthleteDashboard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
