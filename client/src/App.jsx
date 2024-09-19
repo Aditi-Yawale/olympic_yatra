@@ -22,21 +22,15 @@ function App() {
     <Router>
       <Header />
       <Routes>
-      
         <Route path="/coachdashboard" element={<CoachDashboard />} />
         <Route path="/athletedashboard" element={<AthleteDashboard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-<<<<<<< HEAD
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/athletedashboard" element={<AthleteDashboard />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/contactus" element={<ContactUs />} />
-
-=======
-        <Route path="/profile" element={<ProfilePage />} /> {/* Add ProfilePage route */}
->>>>>>> f89bf408169534abc13c50e977d10795d3a3680c
+        
         <Route path="/" element={
           <div className="content-grid">
             <div className="medal-tally"><MedalTally /></div>
