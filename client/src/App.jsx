@@ -12,6 +12,8 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import CoachDashboard from './components/CoachDashboard';
 import AthleteDashboard from './components/AthleteDashboard';
+import ContactUs from './components/ContactUs';
+import AboutUs from './components/AboutUs';
 
 import './App.css';
 
@@ -29,6 +31,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/athletedashboard" element={<AthleteDashboard />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/contactus" element={<ContactUs />} />
+
         <Route path="/" element={
           <div className="content-grid">
             <div className="medal-tally"><MedalTally /></div>
