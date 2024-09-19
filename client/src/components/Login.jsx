@@ -38,7 +38,7 @@ const Login = () => {
                 if (selectedTab === 'Athlete') {
                     navigate('/athletedashboard'); // Navigate to Athlete Dashboard
                 } else if (selectedTab === 'Coach') {
-                    navigate('/#'); // Navigate to Coach Dashboard
+                    navigate('/coachdashboard'); // Navigate to Coach Dashboard
                 }
             } else {
                 // If token isn't present, it means login failed
@@ -47,7 +47,7 @@ const Login = () => {
         })
         .catch(error => {
             console.error('Error during login:', error.response ? error.response.data : error.message); // Log the error details
-            alert('Invalid email id or password: ' + (error.response ? error.response.data.message : error.message)); // Show the actual error to the user
+            alert('Login error: ' + (error.response ? error.response.data.message : error.message)); // Show the actual error to the user
         });
     };
 
