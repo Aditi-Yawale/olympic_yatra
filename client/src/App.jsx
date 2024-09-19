@@ -15,7 +15,6 @@ import AthleteDashboard from './components/AthleteDashboard';
 
 import './App.css';
 
-
 function App() {
   return (
     <Router>
@@ -27,8 +26,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/athletedashboard" element={<AthleteDashboard />} />
+        <Route path="/profile" element={<ProfilePage />} /> {/* Add ProfilePage route */}
         <Route path="/" element={
           <div className="content-grid">
             <div className="medal-tally"><MedalTally /></div>
