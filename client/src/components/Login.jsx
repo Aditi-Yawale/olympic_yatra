@@ -21,7 +21,7 @@ const Login = () => {
         e.preventDefault();
 
         // Call the backend for login
-        axios.post('http://localhost:3001/login', {
+        axios.post('mongodb://localhost:27017/olympics', {
             email: username,
             password: password
         })
@@ -38,7 +38,7 @@ const Login = () => {
                 if (selectedTab === 'Athlete') {
                     navigate('/athletedashboard'); // Navigate to Athlete Dashboard
                 } else if (selectedTab === 'Coach') {
-                    navigate('/coachdashboard'); // Navigate to Coach Dashboard
+                    navigate('/#'); // Navigate to Coach Dashboard
                 }
             } else {
                 // If token isn't present, it means login failed
