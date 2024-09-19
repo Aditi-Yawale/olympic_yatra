@@ -47,7 +47,7 @@ const Login = () => {
         })
         .catch(error => {
             console.error('Error during login:', error.response ? error.response.data : error.message); // Log the error details
-            alert('Login error: ' + (error.response ? error.response.data.message : error.message)); // Show the actual error to the user
+            alert('Invalid email id or password: ' + (error.response ? error.response.data.message : error.message)); // Show the actual error to the user
         });
     };
 
