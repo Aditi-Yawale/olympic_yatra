@@ -1,0 +1,80 @@
+/* ContactUs.css and AboutUs.css */
+
+/* Container Styling */
+.contact-container, .about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* Paragraphs */
+.contact-description, .about-description {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #34495e;
+}
+
+/* Contact Info Styling */
+.contact-info p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+.contact-footer, .about-footer {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 30px;
+}
+
+/* Back Button */
+.back-button {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 25px;
+    background-color: #3498db;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .contact-container, .about-container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .contact-description, .about-description {
+        font-size: 16px;
+    }
+
+    .back-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}

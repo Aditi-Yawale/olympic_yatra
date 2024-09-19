@@ -7,11 +7,13 @@ import Sports from './components/Sports';
 import AtheletePerformance from './components/AtheletePerformance';
 import Header from './components/Header';
 import Register from './components/Register';
-import ProfilePage from './components/ProfilePage'; // Import ProfilePage component
+import ProfilePage from './components/ProfilePage';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import CoachDashboard from './components/CoachDashboard';
 import AthleteDashboard from './components/AthleteDashboard';
+import ContactUs from './components/ContactUs';
+import AboutUs from './components/AboutUs';
 
 import './App.css';
 
@@ -20,13 +22,14 @@ function App() {
     <Router>
       <Header />
       <Routes>
-      
         <Route path="/coachdashboard" element={<CoachDashboard />} />
         <Route path="/athletedashboard" element={<AthleteDashboard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/contactus" element={<ContactUs />} />
         <Route path="/" element={
           <div className="content-grid">
             <div className="medal-tally"><MedalTally /></div>
@@ -37,12 +40,9 @@ function App() {
           </div>
         } />
         <Route path="*" element={
-          <div className="content-grid">
-            <div className="medal-tally"><MedalTally /></div>
-            <div className="event-schedule"><EventSchedule /></div>
-            <div className="live-event"><LiveEvent /></div>
-            <div className="sports"><Sports /></div>
-            <div className="athelete-performance"><AtheletePerformance /></div>
+          <div className="not-found">
+            <h1>404 - Page Not Found</h1>
+            <p>Sorry, the page you are looking for does not exist.</p>
           </div>
         } />
       </Routes>
