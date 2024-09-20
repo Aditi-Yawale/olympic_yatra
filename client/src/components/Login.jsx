@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Header3 from './Header3';
+import Header from './Header';
 
 const Login = () => {
     const [selectedTab, setSelectedTab] = useState('Athlete'); // Athlete login is default
@@ -53,7 +53,7 @@ const Login = () => {
 
     return (
         <div>
-            <Header3 />
+            <Header />
             <div className="container">
                 <div className="image-container">
                     <img src="paris_olympic.png" alt="Olympics Image" />

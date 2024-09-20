@@ -27,9 +27,13 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+<<<<<<< HEAD
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/contactus" element={<ContactUs />} />
+=======
+        <Route path="/profile" element={<ProfilePage />} /> {/* Add ProfilePage route */}
+>>>>>>> parent of 7f1d205 (Basic navigation fixed and athelete&coach dashboard is done)
         <Route path="/" element={
           <div className="content-grid">
             <div className="medal-tally"><MedalTally /></div>

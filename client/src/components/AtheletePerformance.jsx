@@ -1,5 +1,4 @@
 import React from 'react';
-import './CommonDashboard.css';
 
 function AthletePerformance() {
   return (
