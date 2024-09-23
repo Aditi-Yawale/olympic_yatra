@@ -3,12 +3,15 @@
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+
 import PropTypes from 'prop-types';
 
 // Register components needed for the Bar chart
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const BarChart = ({ chartData }) => {
+  console.log(chartData); // Check if chartData is being passed correctly
+
   return (
     <div className="bar-chart-container">
       <h2>Olympics Medal Distribution</h2>
@@ -16,7 +19,7 @@ const BarChart = ({ chartData }) => {
         data={chartData}
         options={{
           responsive: true,
-          maintainAspectRatio: false, // Allow chart to scale without aspect ratio constraint
+          maintainAspectRatio: false,
           plugins: {
             legend: {
               position: 'bottom',
