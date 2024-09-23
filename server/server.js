@@ -63,7 +63,47 @@ app.post('/login', async (req, res) => {
   }
 });
 
+const medalSchema = new mongoose.Schema({
+  Name: String,
+  Sex: String,
+  Age: Number,
+  Height: Number,
+  Weight: Number,
+  Team: String,
+  NOC: String,
+  Games: String,
+  Year: Number,
+  Season: String,
+  City: String,
+  Sport: String,
+  Event: String,
+  Medal: String, // 'Gold', 'Silver', 'Bronze'
+}, { collection: 'athlete_db' });
+
+const Medal = mongoose.model('athlete_db', medalSchema);
+/* 
+app.get('/api/medals', async (req, res) => {
+  const medals = await Medal.find({});
+  res.json(medals);
+}); */
+
+app.get('/api/medals', async (req, res) => {
+  try {
+    const medals = await Medal.find({});
+    
+    // Print the fetched medals to the console
+    console.log('Fetched medals:', medals);
+
+    res.json(medals);
+  } catch (error) {
+    console.error('Error fetching medals:', error);
+    res.status(500).send('Server error');
+  }
+});
+
+
 // Start server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
