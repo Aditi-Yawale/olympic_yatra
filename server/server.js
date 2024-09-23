@@ -90,9 +90,6 @@ app.get('/api/medals', async (req, res) => {
 app.get('/api/medals', async (req, res) => {
   try {
     const medals = await Medal.find({});
-    
-    // Print the fetched medals to the console
-    console.log('Fetched medals:', medals);
 
     res.json(medals);
   } catch (error) {
