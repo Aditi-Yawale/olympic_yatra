@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MedalTally from './components/MedalTally';
 import EventSchedule from './components/EventSchedule';
@@ -14,6 +14,9 @@ import CoachDashboard from './components/CoachDashboard';
 import AthleteDashboard from './components/AthleteDashboard';
 import ContactUs from './components/ContactUs';
 import AboutUs from './components/AboutUs';
+import PieChart from './components/PieChart'; // Add import for PieChart
+import BarChart from './components/BarChart'; // Add import for BarChart
+import { barChartData, chartData } from './components/data'; // Add import for data
 
 import './App.css';
 
@@ -38,14 +41,22 @@ function App() {
             <div className="live-event"><LiveEvent /></div>
             <div className="sports"><Sports /></div>
             <div className="athelete-performance"><AtheletePerformance /></div>
+            <div className="pie-chart">
+              <PieChart chartData={chartData} /> {/* Include PieChart */}
+            </div>
           </div>
         } />
         <Route path="*" element={
-          <div className="not-found">
-            <h1>404 - Page Not Found</h1>
-            <p>Sorry, the page you are looking for does not exist.</p>
+          <div className="charts">
+            <div className="pie-chart">
+              <PieChart chartData={chartData} /> {/* Include PieChart */}
+            </div>
+            <div className="bar-chart">
+              <BarChart chartData={barChartData} /> {/* Include BarChart */}
+            </div>
           </div>
         } />
+
       </Routes>
     </Router>
   );
