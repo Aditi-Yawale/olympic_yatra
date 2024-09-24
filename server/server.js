@@ -133,9 +133,6 @@ app.get('/api/medals', async (req, res) => {
   try {
     const medals = await Medal.find({});
 
-    // Print the fetched medals to the console
-    console.log('Fetched medals:', medals);
-
     res.json(medals);
   } catch (error) {
     console.error('Error fetching medals:', error);

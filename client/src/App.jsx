@@ -13,21 +13,23 @@ import CoachDashboard from './components/CoachDashboard';
 import AthleteDashboard from './components/AthleteDashboard';
 import ContactUs from './components/ContactUs';
 import AboutUs from './components/AboutUs';
-import PieChart from './components/PieChart'; // Import for PieChart
-import BarChart from './components/BarChart'; // Import for BarChart
-import Plot1 from './components/Plot1'; // Import for plot1
 
-// Import necessary data
+// Visualizations
+import PieChart from './components/PieChart';
+import BarChart from './components/BarChart';
+import Plot1 from './components/Plot1';
+import Plot2 from './components/Plot2';
+import AgeDistributionChart from './components/AgeDistributionChart';
+import MedalsOverYearsChart from './components/MedalsOverYearsChart';
+import HeightVsWeightChart from './components/HeightVsWeightChart';
 import { barChartData, chartData } from './components/data';
-
-import './App.css'; // Import styles
+import './App.css';
 
 function App() {
   return (
     <Router>
       <Header />
       <Routes>
-        {/* Define routes for different components */}
         <Route path="/coachdashboard" element={<CoachDashboard />} />
         <Route path="/athletedashboard" element={<AthleteDashboard />} />
         <Route path="/register" element={<Register />} />
@@ -36,8 +38,6 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/contactus" element={<ContactUs />} />
-
-        {/* Define the default route */}
         <Route
           path="/"
           element={
@@ -54,35 +54,42 @@ function App() {
               <div className="sports">
                 <Sports />
               </div>
-              <div className="athelete-performance">
+              {/* <div className="athelete-performance">
                 <AtheletePerformance />
+              </div> */}
+              <div className="plot1">
+                <Plot1 />
               </div>
-              <div className="pie-chart">
-                <PieChart chartData={chartData} /> {/* Render PieChart */}
+              <div className="plot2">
+                <Plot2 />
               </div>
-              <div className="bar-chart">
-                <BarChart chartData={barChartData} /> {/* Render BarChart */}
+              <div className="age-distribution-chart">
+                <AgeDistributionChart />
               </div>
-                            <div className="pie-chart">
-                <Plot1 /> {/* Render Plot1 for pie chart */}
+              <div className="medals-over-years-chart">
+                <MedalsOverYearsChart />
+              </div>
+              <div className="medals-over-years-chart">
+                <HeightVsWeightChart />
               </div>
             </div>
           }
         />
-
-        {/* Fallback route for undefined paths */}
         <Route
           path="*"
           element={
             <div className="charts">
               <div className="bar-chart">
-                <BarChart chartData={barChartData} /> {/* Render BarChart first */}
+                <BarChart chartData={barChartData} />
               </div>
               <div className="pie-chart">
-                <PieChart chartData={chartData} /> {/* Render PieChart second */}
+                <PieChart chartData={chartData} />
               </div>
-              <div className="pie-chart">
-                <Plot1 /> {/* Render Plot1 for pie chart */}
+              <div className="plot1">
+                <Plot1 />
+              </div>
+              <div className="plot2">
+                <Plot2 />
               </div>
             </div>
           }
