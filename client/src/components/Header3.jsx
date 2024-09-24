@@ -6,7 +6,7 @@ const Header3 = () => {
   return (
     <header className='header'>
       <div className="header-left">
-        <Link to="/#">
+        <Link to="/athletedashboard">
           <img src="Olympic_flag.png" alt="Logo" className="logo" />
         </Link>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Header from './Header'; // Import the Header component
+import Header3 from './Header3'; // Import the Header component
 import './Register.css'; // Import your CSS
 
 const Register = () => {
@@ -55,7 +55,7 @@ const Register = () => {
 
   return (
     <div>
-      <Header />
+      <Header3 />
       <div className="container">
         <div className="form-container">
           <h2>Register as an Athlete</h2>
