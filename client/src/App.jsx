@@ -3,7 +3,6 @@ import MedalTally from './components/MedalTally';
 import EventSchedule from './components/EventSchedule';
 import LiveEvent from './components/LiveEvent';
 import Sports from './components/Sports';
-import AtheletePerformance from './components/AtheletePerformance';
 import Header from './components/Header';
 import Register from './components/Register';
 import ProfilePage from './components/ProfilePage';
@@ -13,6 +12,7 @@ import CoachDashboard from './components/CoachDashboard';
 import AthleteDashboard from './components/AthleteDashboard';
 import ContactUs from './components/ContactUs';
 import AboutUs from './components/AboutUs';
+import './components/CommonDashboard.css';
 
 // Visualizations
 import PieChart from './components/PieChart';

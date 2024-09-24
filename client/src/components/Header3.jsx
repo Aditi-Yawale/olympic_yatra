@@ -12,14 +12,12 @@ const Header3 = () => {
       </div>
       <div className="header-right">
         <nav className="header-nav">
-          <a href="#contact-us" className="nav-item">Contact Us</a>
-          <a href="#about-us" className="nav-item">About Us</a>
+          <Link to="/contactus" className="nav-item">Contact Us</Link>
+          <Link to="/aboutus" className="nav-item">About Us</Link>
         </nav>
         
         <div className="profile-photo">
-          <Link to="/profile">
-            <img src="avatar.png" alt="Profile" className="profile-img" />
-          </Link>
+          <img src="avatar.png" alt="Profile" className="profile-img" />
         </div>
       </div>
     </header>

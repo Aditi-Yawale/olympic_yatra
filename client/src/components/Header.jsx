@@ -16,9 +16,7 @@ const Header = () => {
         </nav>
         
         <div className="profile-photo">
-        <Link to="/profile">
           <img src="avatar.png" alt="Profile" className="profile-img" />
-        </Link>
         </div>
       </div>
     </header>

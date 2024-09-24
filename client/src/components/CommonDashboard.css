@@ -1,3 +1,4 @@
+/* Live Event Styles */
 .live-event-container {
     width: 100%;
     max-width: 100%;
@@ -82,16 +83,18 @@
     background-color: #0056b3;
 }
 
+/* Medal Tally Styles */
 .medal-tally-container {
     padding: 20px;
-    background-color: inherit;
+    background-color: white;
     border: 2px solid #ddd;
     border-radius: 10px;
-    margin-top: 20px;
+    margin: 20px auto;
     width: 100%; 
-    max-width: 100%; 
-    height: auto;
+    max-width: auto;
+    height: auto; 
     box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .medal-tally-header {
@@ -103,15 +106,20 @@
 
 .medal-tally-container h2 {
     margin: 0;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .show-all-btn {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 8px 15px;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
 .show-all-btn:hover {
@@ -135,12 +143,16 @@
 
 .medal-tally-header-row {
     font-weight: bold;
-    border-bottom: 2px solid #ddd;
+    background-color: #f8f8f8;
+    border-bottom: 2px solid #ccc;
 }
 
 .country-name {
     text-align: left;
     padding-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
 }
 
 .medal-counts {
@@ -151,16 +163,34 @@
 
 .medal-count {
     font-size: 14px;
-    color: #555;
+    color: #333;
+    font-weight: bold;
     text-align: center;
 }
 
 .medal-label {
     text-align: center;
     font-weight: bold;
+    color: #007bff;
     padding: 0 10px;
 }
 
+@media screen and (max-width: 768px) {
+    .medal-tally-header-row,
+    .medal-tally-item {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .country-name {
+        font-size: 14px;
+    }
+
+    .medal-count {
+        font-size: 12px;
+    }
+}
+
+/* Event Schedule Styles */
 .event-schedule-container {
     padding: 20px;
     font-family: Arial, sans-serif;
@@ -233,6 +263,7 @@ h2 {
     margin-right: 10px;
 }
 
+/* Additional Live Event Container */
 .live-event-container {
     background-color: #f77e76;
     padding: 20px;

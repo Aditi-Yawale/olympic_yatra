@@ -1,12 +1,12 @@
 import React from 'react';
 import Header2 from './Header2';
-import MedalTally from './MedalTally';
+import MedalTally2 from './MedalTally2';
 import Timeline from './Timeline';
 import Performance from './Performance';
 import PastFeedback from './PastFeedback';
 import CoachCommunication from './CoachCommunication';
 import PlayersPerCountry from './PlayersPerCountry';
-import Sports from './Sports';
+import Sports2 from './Sports2';
 import './AthleteDashboard.css';
 
 const AthleteDashboard = () => {
@@ -16,8 +16,8 @@ const AthleteDashboard = () => {
       <div className="dashboard">
         {/* Left Sidebar */}
         <div className="sidebar-left">
-          <MedalTally className="medal-tally" />
-          <Sports className="sports" />
+          <MedalTally2 className="medal-tally" />
+          <Sports2 className="sports" />
         </div>
 
         {/* Main Content */}

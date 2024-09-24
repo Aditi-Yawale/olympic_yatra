@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+import Header3 from './Header3';
 import ProfilePicture from './ProfilePicture';
 import Details from './Details';
 import Sport from './Sport';
@@ -7,7 +7,6 @@ import Experience from './Experience';
 import MedicalHistory from './MedicalHistory';
 import Coach from './Coach'; // Import the Coach component
 import './ProfilePage.css';
-import Header3 from './Header3';
 
 const ProfilePage = () => {
   return (

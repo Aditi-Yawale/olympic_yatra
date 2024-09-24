@@ -60,6 +60,9 @@
   .profile-photo {
     display: flex;
     align-items: center;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
   }
   
   /* Style for the profile photo image */
@@ -69,3 +72,83 @@
     border-radius: 50%;
     object-fit: cover;
   }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%; /* Align the dropdown below the profile image */
+    right: 0; /* Align dropdown to the right edge */
+    background-color: #ffffff;
+    border: 1px solid #ddd; /* Light border for separation */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Drop shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensure rounded corners for inner items */
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px); /* Dropdown slides in */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .profile-photo:hover .dropdown-menu,
+  .profile-photo:focus .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* Slides in */
+  }
+  
+  /* Styling for each dropdown item */
+  .dropdown-item {
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* Add some icons to make it more interactive */
+  .dropdown-item::before {
+    content: '';
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Profile page icon */
+  .dropdown-item:first-child::before {
+    background-image: url('profile-icon.png'); /* Replace with actual icon URL */
+  }
+  
+  /* Logout icon */
+  .dropdown-item:last-child::before {
+    background-image: url('logout-icon.png'); /* Replace with actual icon URL */
+  }
+  
+  /* Hover effect on dropdown items */
+  .dropdown-item:hover {
+    background-color: #f5f5f5;
+    color: #000;
+  }
+  
+  /* Separate the dropdown items visually */
+  .dropdown-item:not(:last-child) {
+    border-bottom: 1px solid #eee;
+  }
+  
+  /* Add some spacing around the profile image */
+  .profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Add hover effect for the profile image */
+  .profile-photo:hover .profile-img {
+    transform: scale(1.05); /* Slight zoom on hover */
+  }
+  

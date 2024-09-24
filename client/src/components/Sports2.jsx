@@ -1,7 +1,7 @@
 import React from 'react';
-import './CommonDashboard.css';
+import './AthleteDashboard.css';
 
-function Sports() {
+function Sports2() {
   return (
     <div className="sports-container">
       <h3>Sports</h3>
@@ -15,4 +15,4 @@ function Sports() {
   );
 }
 
-export default Sports;
+export default Sports2;
