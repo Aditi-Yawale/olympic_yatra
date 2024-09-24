@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'; // Adjust the path if necessary
 
-const Header = () => {
+const Header2 = () => {
   return (
     <header className='header'>
       <div className="header-left">
@@ -10,19 +10,19 @@ const Header = () => {
       </div>
       <div className="header-right">
         <nav className="header-nav">
-        <Link to="/contactus" className="nav-item">Contact Us</Link>
-          <Link to="/aboutus" className="nav-item">About Us</Link>
-          <Link to="/login" className="nav-item">Login</Link>
+          <a href="#contact-us" className="nav-item">Contact Us</a>
+          <a href="#about-us" className="nav-item">About Us</a>
+          <Link to="/register" className="nav-item">Register</Link>
         </nav>
         
         <div className="profile-photo">
-        <Link to="/profile">
-          <img src="avatar.png" alt="Profile" className="profile-img" />
-        </Link>
+          <Link to="/profile">
+            <img src="avatar.png" alt="Profile" className="profile-img" />
+          </Link>
         </div>
       </div>
     </header>
   );
 };
 
-export default Header;
+export default Header2;

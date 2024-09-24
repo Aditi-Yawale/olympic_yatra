@@ -7,11 +7,12 @@ import Experience from './Experience';
 import MedicalHistory from './MedicalHistory';
 import Coach from './Coach'; // Import the Coach component
 import './ProfilePage.css';
+import Header3 from './Header3';
 
 const ProfilePage = () => {
   return (
     <div>
-      <Header />
+      <Header3 />
       <div className="profile-page-container">
         <ProfilePicture />
         <Details />
