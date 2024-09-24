@@ -178,6 +178,21 @@ button:hover {
   color: #1c86e0;
 }
 
+
+.charts {
+  display: flex; /* Arrange the charts side by side */
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allows charts to stack in small screens */
+  gap: 20px; /* Adds space between the charts */
+}
+
+.pie-chart, .bar-chart {
+  flex: 1; /* Let both charts take equal space */
+  min-width: 300px; /* Minimum width to ensure visibility */
+}
+
+
+
 /* Responsive layout changes */
 @media (max-width: 768px) {
   .content-grid {
