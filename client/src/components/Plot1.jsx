@@ -13,7 +13,6 @@ function Plot1() {
         const fetchMedals = async () => {
             try {
                 const response = await axios.get('http://localhost:3001/api/medals');
-                console.log("Fetched medals:", response.data);
                 const medals = response.data;
     
                 // Count medals
