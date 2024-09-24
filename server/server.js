@@ -1,4 +1,3 @@
-// server/server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -19,7 +18,44 @@ mongoose.connect('mongodb://localhost:27017/olympics', { useNewUrlParser: true, 
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
-// Registration Route
+// User Schema for Registration and Login
+const medalSchema = new mongoose.Schema({
+  Name: String,
+  Sex: String,
+  Age: Number,
+  Height: Number,
+  Weight: Number,
+  Team: String,
+  NOC: String,
+  Games: String,
+  Year: Number,
+  Season: String,
+  City: String,
+  Sport: String,
+  Event: String,
+  Medal: String, // 'Gold', 'Silver', 'Bronze'
+}, { collection: 'athlete_db' });
+
+const Medal = mongoose.model('athlete_db', medalSchema);
+
+// Athlete Registration Schema for Health Metrics
+const athleteSchema = new mongoose.Schema({
+  name: String,
+  age: Number,
+  height: Number,
+  weight: Number,
+  cholesterol: Number,
+  sugar: Number,
+  bp: String,
+  heartRate: Number,
+  oxygenSaturation: Number,
+  vo2Max: Number,
+  coreTemp: Number,
+}, { collection: 'athlete_health' });
+
+const Athlete = mongoose.model('athlete_health', athleteSchema);
+
+// Registration Route for User
 app.post('/register', async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -63,30 +99,36 @@ app.post('/login', async (req, res) => {
   }
 });
 
-const medalSchema = new mongoose.Schema({
-  Name: String,
-  Sex: String,
-  Age: Number,
-  Height: Number,
-  Weight: Number,
-  Team: String,
-  NOC: String,
-  Games: String,
-  Year: Number,
-  Season: String,
-  City: String,
-  Sport: String,
-  Event: String,
-  Medal: String, // 'Gold', 'Silver', 'Bronze'
-}, { collection: 'athlete_db' });
+// New Athlete Registration Route (Health Metrics)
+app.post('/api/registerAthlete', async (req, res) => {
+  const {
+    name, age, height, weight, cholesterol, sugar, bp, heartRate, oxygenSaturation, vo2Max, coreTemp
+  } = req.body;
 
-const Medal = mongoose.model('athlete_db', medalSchema);
-/* 
-app.get('/api/medals', async (req, res) => {
-  const medals = await Medal.find({});
-  res.json(medals);
-}); */
+  try {
+    const newAthlete = new Athlete({
+      name,
+      age,
+      height,
+      weight,
+      cholesterol,
+      sugar,
+      bp,
+      heartRate,
+      oxygenSaturation,
+      vo2Max,
+      coreTemp,
+    });
 
+    await newAthlete.save();
+    res.status(201).send('Athlete registered successfully');
+  } catch (error) {
+    console.error('Error registering athlete:', error);
+    res.status(500).send('Server error');
+  }
+});
+
+// Fetch medals
 app.get('/api/medals', async (req, res) => {
   try {
     const medals = await Medal.find({});
@@ -98,9 +140,7 @@ app.get('/api/medals', async (req, res) => {
   }
 });
 
-
 // Start server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
-
