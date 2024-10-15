@@ -36,6 +36,83 @@ const medalSchema = new mongoose.Schema({
   Medal: String, // 'Gold', 'Silver', 'Bronze'
 }, { collection: 'athlete_db' });
 
+const userProfileSchema = new mongoose.Schema({
+  _id: Number,
+  name: String,
+  email: String,
+  age: Number,
+  medicalHistory: {
+    diagnosis: String,
+    treatment: String
+  },
+  experience: {
+    districtLevel: String,
+    stateLevel: String,
+    nationalLevel: String,
+    internationalLevel: String
+  }
+});
+
+const UserProfile = mongoose.model('UserProfile', userProfileSchema);
+
+
+app.post('/api/user', async (req, res) => {
+  const { _id, name, email, age, medicalHistory, experience } = req.body;
+
+  try {
+    const newUser = new UserProfile({
+      _id,
+      name,
+      email,
+      age,
+      medicalHistory,  // Added medical history
+      experience        // Added experience
+    });
+    await newUser.save();
+    res.status(201).send(newUser);
+  } catch (error) {
+    res.status(500).send('Error adding profile: ' + error.message);
+  }
+});
+
+
+app.get('/api/user/:id', async (req, res) => {
+  try {
+    const user = await UserProfile.findById(req.params.id);
+    if (!user) return res.status(404).send('User not found');
+    res.send(user);
+  } catch (error) {
+    res.status(500).send('Server error');
+  }
+});
+
+// Route to update the user profile
+
+app.put('/api/user/:id', async (req, res) => {
+  const { name, email, age, medicalHistory, experience } = req.body;
+
+  try {
+    const user = await UserProfile.findByIdAndUpdate(
+      req.params.id,
+      {
+        name,
+        email,
+        age,
+        medicalHistory,  // Added medical history
+        experience        // Added experience
+      },
+      { new: true, runValidators: true }
+    );
+
+    if (!user) return res.status(404).send('User not found');
+
+    res.send(user);
+  } catch (error) {
+    res.status(500).send('Error updating profile: ' + error.message);
+  }
+});
+
+
 const Medal = mongoose.model('athlete_db', medalSchema);
 
 // Athlete Registration Schema for Health Metrics
@@ -89,7 +166,7 @@ app.post('/login', async (req, res) => {
     const match = await bcrypt.compare(password, user.password);
 
     if (match) {
-      const token = jwt.sign({ id: user._id }, 'your_jwt_secret', { expiresIn: '1h' });
+      const token = jwt.sign({ id: user._id }, 'your_jwt_secret', { expiresIn: '1d' });
       res.json({ token });
     } else {
       res.status(400).send('Invalid credentials');
