@@ -22,6 +22,8 @@ import Plot2 from './components/Plot2';
 import AgeDistributionChart from './components/AgeDistributionChart';
 import MedalsOverYearsChart from './components/MedalsOverYearsChart';
 import HeightVsWeightChart from './components/HeightVsWeightChart';
+import TopCountriesParticipationChart from './components/TopCountriesParticipationChart';
+import GenderWiseParticipationChart from './components/GenderWiseParticipationChart';
 import { barChartData, chartData } from './components/data';
 import './App.css';
 
@@ -71,6 +73,12 @@ function App() {
               </div>
               <div className="medals-over-years-chart">
                 <HeightVsWeightChart />
+              </div>
+              <div className="age-distribution-chart">
+                <TopCountriesParticipationChart />
+              </div>
+              <div className="age-distribution-chart">
+                <GenderWiseParticipationChart />
               </div>
             </div>
           }

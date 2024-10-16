@@ -7,7 +7,7 @@ spark = SparkSession.builder \
     .getOrCreate()
 
 # Read the CSV file
-df = spark.read.csv("/Users/vaidatpatel/Documents/Coding/olympics_project/athlete_events.csv", header=True, inferSchema=True)
+df = spark.read.csv("./scripts/athlete_events.csv", header=True, inferSchema=True)
 
 # Perform the complex query to find gender-wise participation               
 result_df = df.filter(df['Year'] >= 2012)\
