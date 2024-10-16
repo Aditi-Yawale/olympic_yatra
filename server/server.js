@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const User = require('./models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+const { spawn } = require('child_process');
+const path = require('path'); // Import path module
 const app = express();
 const port = 3001;
 
@@ -216,6 +217,185 @@ app.get('/api/medals', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
+
+/* app.get('/api/medalsByGender', (req, res) => {
+  // Execute the Python script to process data from MongoDB
+  exec(`python3 process_medals_by_gender.py`, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error executing Python script: ${error}`);
+      return res.status(500).send('Error processing medals data');
+    }
+
+    // Send the processed result back to the client
+    try {
+      const result = JSON.parse(stdout);
+      res.json(result);
+    } catch (parseError) {
+      console.error(`Error parsing Python output: ${parseError}`);
+      res.status(500).send('Error parsing medals data');
+    }
+  });
+}); */
+
+
+/* // Fetch top 15 countries API
+app.get('/api/top-countries', async (req, res) => {
+  try {
+    // Read the JSON file
+    const dataPath = path.join(__dirname, 'top_countries.json');
+    const jsonData = fs.readFileSync(dataPath, 'utf8');
+    
+    // Parse the JSON data
+    const topCountries = JSON.parse(jsonData);
+    
+    // Send the response
+    res.json(topCountries);
+  } catch (error) {
+    console.error('Error fetching top countries:', error);
+    res.status(500).send('Server error');
+  }
+});
+ */
+
+/* app.get('/api/top-countries', (req, res) => {
+  const pythonScriptPath = path.join(__dirname, 'scripts/top_countries.py'); // Update as needed
+
+  // Start the Python process
+  const process = spawn('python3', [pythonScriptPath]);
+
+  let outputData = '';
+
+  // Collect data from stdout
+  process.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`);
+      outputData += data.toString(); // Append to outputData
+  });
+
+  // Handle errors from stderr
+  process.stderr.on('data', (data) => {
+      console.error(`stderr: ${data}`);
+      // Send error response only if it hasn't been sent yet
+      if (!res.headersSent) {
+          return res.status(500).send('Server error: ' + data.toString());
+      }
+  });
+
+  // Handle when the process closes
+  process.on('close', (code) => {
+      console.log(`Child process exited with code ${code}`);
+      // Only send response if the process exited successfully
+      if (code === 0) {
+          try {
+              const topCountries = JSON.parse(outputData); // Parse JSON data from script output
+              return res.json(topCountries); // Send the parsed data
+          } catch (error) {
+              console.error('Error parsing JSON:', error);
+              return res.status(500).send('Server error: JSON parsing failed');
+          }
+      } else {
+          // If the process did not exit successfully
+          if (!res.headersSent) {
+              return res.status(500).send('Server error: script exited with code ' + code);
+          }
+      }
+  });
+});
+ */
+
+app.get('/api/top-countries', (req, res) => {
+  const pythonScriptPath = path.join(__dirname, 'scripts/top_countries.py'); // Update as needed
+
+  // Start the Python process
+  const process = spawn('python3', [pythonScriptPath]);
+
+  let outputData = '';
+  let errorData = '';
+
+  // Collect data from stdout
+  process.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`);
+      outputData += data.toString(); // Append to outputData
+  });
+
+  // Collect errors from stderr
+  process.stderr.on('data', (data) => {
+      console.error(`stderr: ${data}`);
+      errorData += data.toString(); // Append to errorData
+  });
+
+  // Handle when the process closes
+  process.on('close', (code) => {
+      console.log(`Child process exited with code ${code}`);
+
+      if (code === 0) {
+          // Check if outputData is not empty
+          if (!outputData) {
+              console.error('No output from Python script');
+              return res.status(500).send('Server error: No output from script');
+          }
+
+          // Only parse and send the response if the process exited successfully
+          try {
+              const topCountries = JSON.parse(outputData); // Parse JSON data from script output
+              return res.json(topCountries); // Send the parsed data
+          } catch (error) {
+              console.error('Error parsing JSON:', error);
+              return res.status(500).send('Server error: JSON parsing failed - ' + error.message);
+          }
+      } else {
+          // If there were errors during the execution of the script
+          console.error('Script execution error:', errorData);
+          return res.status(500).send('Server error: script exited with code ' + code + '. Error: ' + errorData);
+      }
+  });
+});
+
+
+
+app.get('/api/gender-wise-participation', (req, res) => {
+  const pythonScriptPath = path.join(__dirname, 'scripts/gender_wise_parcticipation.py'); // Update as needed
+
+  // Start the Python process
+  const process = spawn('python3', [pythonScriptPath]);
+
+  let outputData = '';
+  let errorData = '';
+
+  // Collect data from stdout
+  process.stdout.on('data', (data) => {
+      console.log(`stdout: ${data}`);  // Log output from Python
+      outputData += data.toString(); // Append to outputData
+  });
+
+  // Collect errors from stderr
+  process.stderr.on('data', (data) => {
+      console.error(`stderr: ${data}`);  // Log errors from Python
+      errorData += data.toString(); // Append to errorData
+  });
+
+  // Handle when the process closes
+  process.on('close', (code) => {
+      console.log(`Child process exited with code ${code}`);
+
+      if (code === 0) {
+          // Only parse and send the response if the process exited successfully
+          try {
+              console.log("Output Data:", outputData);  // Log the final outputData
+              const genderParticipation = JSON.parse(outputData); // Parse JSON data from script output
+              return res.json(genderParticipation); // Send the parsed data
+          } catch (error) {
+              console.error('Error parsing JSON:', error);
+              return res.status(500).send('Server error: JSON parsing failed');
+          }
+      } else {
+          // If there were errors during the execution of the script
+          console.error('Script execution error:', errorData);
+          return res.status(500).send('Server error: script exited with code ' + code + '. Error: ' + errorData);
+      }
+  });
+});
+
+
 
 // Start server
 app.listen(port, () => {
