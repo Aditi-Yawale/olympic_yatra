@@ -2,17 +2,180 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const User = require('./models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { spawn } = require('child_process');
 const path = require('path'); // Import path module
 const app = express();
 const port = 3001;
+const nodemailer = require('nodemailer');
+
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+
+const userSchema = new mongoose.Schema({
+    username: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: false },
+    otp: { type: String }, // Ensure this field is defined
+    isVerified: { type: Boolean, default: false } // User is not verified until OTP is confirmed
+});
+
+const User = mongoose.model('User', userSchema);
+module.exports = User;
+
+// Configure Nodemailer
+const transporter = nodemailer.createTransport({
+  service: 'gmail', // You can use any other email service
+  auth: {
+    user: 'yawaleaditi@gmail.com', // Replace with your email
+    pass: 'zkfz gpmm pcvc qklb' // Replace with your email password
+  }
+});
+
+// OTP Generation function
+function generateOTP() {
+  return Math.floor(100000 + Math.random() * 900000); // 6-digit OTP
+}
+
+// User Registration with OTP
+app.post('/register-user', async (req, res) => {
+  const { username, email } = req.body;
+
+  try {
+    // Check if user already exists
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      return res.status(400).send('User already exists');
+    }
+
+    const otp = generateOTP(); // Generate OTP
+
+    // Store OTP temporarily in user session or database
+    const newUser = new User({
+      username,
+      email,
+      otp, // Store OTP
+      isVerified: false // User is not verified until OTP is confirmed
+      // Do not include password here, as it will be set later
+    });
+
+    // Send OTP to user's email
+    const mailOptions = {
+      from: 'yawaleaditi@gmail.com',
+      to: email,
+      subject: 'Your OTP for Signup',
+      text: `Your OTP is ${otp}`
+    };
+
+    // Send the OTP email
+    await transporter.sendMail(mailOptions);
+
+    // Save the user to the database (without password)
+    await newUser.save();
+    res.status(201).send('OTP sent to email. Please verify.');
+  } catch (error) {
+    console.error('Error during registration:', error);
+    res.status(500).send('Server error');
+  }
+});
+
+
+
+// OTP Verification Route
+app.post('/verify-otp', async (req, res) => {
+  const { email, otp } = req.body;
+
+  try {
+      const user = await User.findOne({ email });
+      if (!user) {
+          console.log('User not found for email:', email);
+          return res.status(400).send({ success: false, message: 'User not found' });
+      }
+      
+      console.log('Received OTP:', otp);
+      console.log('User OTP:', user.otp);
+
+      // Ensure both values are compared as strings
+      if (user.otp.trim() === otp.trim()) {
+          user.isVerified = true;
+          await user.save();
+          return res.status(200).send({ success: true, message: 'User verified successfully' });
+      } else {
+          return res.status(400).send({ success: false, message: 'Invalid OTP' });
+      }
+  } catch (error) {
+      console.error('Error verifying OTP:', error);
+      res.status(500).send('Server error');
+  }
+});
+
+app.post('/set-password', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+      console.log("Looking for user with email:", email); // Debugging line
+      const user = await User.findOne({ email });
+
+      if (!user) {
+          console.log("User not found"); // Debugging line
+          return res.status(400).send({ success: false, message: 'User not found' });
+      }
+
+      if (!user.isVerified) {
+          return res.status(400).send({ success: false, message: 'User not verified' });
+      }
+
+      // Check if the password field already exists
+      if (!user.password) {
+          // Hash the password before saving it
+          user.password = await bcrypt.hash(password, 10); // Hash the password
+          await user.save();
+          console.log("Password set successfully for user:", email); // Debugging line
+          return res.send({ success: true, message: 'Password set successfully' });
+      } else {
+          // If the password field already exists, you might want to handle it differently
+          return res.status(400).send({ success: false, message: 'Password already set' });
+      }
+  } catch (error) {
+      console.error('Error setting password:', error);
+      res.status(500).send('Server error');
+  }
+});
+
+
+
+
+
+
+// Login Route (Only allow login if user is verified)
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).send('User not found');
+    }
+
+    if (!user.isVerified) {
+      return res.status(400).send('User is not verified. Please verify using OTP.');
+    }
+
+    const match = await bcrypt.compare(password, user.password);
+    if (match) {
+      const token = jwt.sign({ id: user._id }, 'your_jwt_secret', { expiresIn: '1d' });
+      res.json({ token });
+    } else {
+      res.status(400).send('Invalid credentials');
+    }
+  } catch (error) {
+    res.status(500).send('Server error');
+  }
+});
+
 
 // MongoDB Connection
 mongoose.connect('mongodb://localhost:27017/olympics', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -135,21 +298,28 @@ const Athlete = mongoose.model('athlete_health', athleteSchema);
 
 // Registration Route for User
 app.post('/register', async (req, res) => {
-  const { username, email, password } = req.body;
+  const { email, password } = req.body; // Expecting email and password in the request body
 
   try {
-    const hashedPassword = await bcrypt.hash(password, 10);
+      // Find the user based on the email
+      const user = await User.findOne({ email });
 
-    const newUser = new User({
-      username,
-      email,
-      password: hashedPassword
-    });
+      // Check if the user exists and is verified
+      if (!user || !user.isVerified) {
+          return res.status(400).send({ success: false, message: 'User not verified or not found' });
+      }
 
-    await newUser.save();
-    res.status(201).send('User registered');
+      // Hash the password
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      // Update the existing user's password
+      user.password = hashedPassword; // Store the hashed password
+      await user.save(); // Save the updated user document
+
+      res.status(200).send('User registered successfully'); // Success response
   } catch (error) {
-    res.status(500).send('Server error');
+      console.error('Error during registration:', error); // Log the error
+      res.status(500).send('Server error'); // Send a server error response
   }
 });
 
