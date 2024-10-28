@@ -44,7 +44,7 @@ function App() {
           path="/"
           element={
             <div className="content-grid">
-              <div className="medal-tally">
+              <div className="medal-tally-container">
                 <MedalTally />
               </div>
               <div className="event-schedule">

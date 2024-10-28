@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './CommonDashboard.css';
 
 const allCountries = [
-  { country: 'United States ', gold: 30, silver: 25, bronze: 20 },
+  { country: 'United States', gold: 30, silver: 25, bronze: 20 },
   { country: 'China', gold: 29, silver: 17, bronze: 16 },
   { country: 'Japan', gold: 27, silver: 14, bronze: 17 },
   { country: 'Great Britain', gold: 22, silver: 17, bronze: 19 },
@@ -24,30 +24,31 @@ function MedalTally() {
   const countriesToShow = showAll ? allCountries : allCountries.slice(0, 5);
 
   return (
-    <div className="medal-tally-container">
-      <div className="medal-tally-header">
-        <h2>Medal Tally</h2>
-        <button onClick={handleToggle} className="show-all-btn">
-          {showAll ? 'Show Less' : 'Show All'}
-        </button>
-      </div>
-      <div className="medal-tally-list">
-        <div className="medal-tally-header-row">
-          <div className="country-name">Country</div>
-          <div className="medal-label">Gold</div>
-          <div className="medal-label">Silver</div>
-          <div className="medal-label">Bronze</div>
+    <div className={`medal-tally-wrapper ${showAll ? 'medal-tally-expanded' : ''}`}>
+      <div className="medal-tally-background"></div>
+      <div className="medal-tally-container">
+        <div className="medal-tally-header">
+          <h2>Medal Tally</h2>
+          <button onClick={handleToggle} className="show-all-btn">
+            {showAll ? 'Show Less' : 'Show All'}
+          </button>
         </div>
-        {countriesToShow.map((country, index) => (
-          <div key={index} className="medal-tally-item">
-            <div className="country-name">{country.country}</div>
-            <div className="medal-counts">
+        <div className="medal-tally-list">
+          <div className="medal-tally-header-row">
+            <div className="country-name">Country</div>
+            <div className="medal-label">Gold</div>
+            <div className="medal-label">Silver</div>
+            <div className="medal-label">Bronze</div>
+          </div>
+          {countriesToShow.map((country, index) => (
+            <div key={index} className="medal-tally-item">
+              <div className="country-name">{country.country}</div>
               <div className="medal-count">{country.gold}</div>
               <div className="medal-count">{country.silver}</div>
               <div className="medal-count">{country.bronze}</div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

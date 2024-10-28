@@ -1,6 +1,6 @@
 import React from 'react';
 import Header4 from './Header4';
-import MedalTally3 from './MedalTally3';
+import MedalTally from './MedalTally';
 import Timeline from './Timeline';
 import Performance from './Performance';
 import YourAthletes from './YourAthletes';
@@ -16,7 +16,7 @@ const CoachDashboard = () => {
       <div className="dashboard">
         {/* Left Sidebar */}
         <div className="sidebar-left">
-          <MedalTally3 className="medal-tally" />
+          <MedalTally className="medal-tally" />
           <Sports3 className="sports" />
         </div>
 

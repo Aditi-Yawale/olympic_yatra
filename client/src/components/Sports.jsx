@@ -1,17 +1,41 @@
 import React from 'react';
-import './CommonDashboard.css';
 
 function Sports() {
   return (
-    <div className="sports-container">
-      <h3>Sports</h3>
-      <div className="sport-item">Athletics</div>
-      <div className="sport-item">Weightlifting</div>
-      <div className="sport-item">Wrestling</div>
-      <div className="sport-item">Rowing</div>
-      <div className="sport-item">Judo</div>
-      <div className="sport-item">Basketball</div>
-    </div>
+<div className="sports-container">
+  <h3>Sports</h3>
+  <div className="sport-item">
+    <a href="https://en.wikipedia.org/wiki/Athletics_(sport)" target="_blank" rel="noopener noreferrer">
+      Athletics
+    </a>
+  </div>
+  <div className="sport-item">
+    <a href="https://en.wikipedia.org/wiki/Weightlifting" target="_blank" rel="noopener noreferrer">
+      Weightlifting
+    </a>
+  </div>
+  <div className="sport-item">
+    <a href="https://en.wikipedia.org/wiki/Wrestling" target="_blank" rel="noopener noreferrer">
+      Wrestling
+    </a>
+  </div>
+  <div className="sport-item">
+    <a href="https://en.wikipedia.org/wiki/Rowing_(sport)" target="_blank" rel="noopener noreferrer">
+      Rowing
+    </a>
+  </div>
+  <div className="sport-item">
+    <a href="https://en.wikipedia.org/wiki/Judo" target="_blank" rel="noopener noreferrer">
+      Judo
+    </a>
+  </div>
+  <div className="sport-item">
+    <a href="https://en.wikipedia.org/wiki/Basketball" target="_blank" rel="noopener noreferrer">
+      Basketball
+    </a>
+  </div>
+</div>
+
   );
 }
 
