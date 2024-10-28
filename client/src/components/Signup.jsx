@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const Signup = () => {
     const navigate = useNavigate();
-    
+
     // State to track form data
     const [formData, setFormData] = useState({
         username: '',
@@ -13,11 +13,15 @@ const Signup = () => {
         dob: '',
         gender: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        otp: '', // New state to store OTP input
     });
 
-    // State to track the current step (1, 2, or 3)
+    // State to track the current step (1, 2, 3, or 4)
     const [step, setStep] = useState(1);
+
+    // State to track OTP sent status
+    const [otpSent, setOtpSent] = useState(false);
 
     // Handle form input changes
     const handleChange = (e) => {
@@ -27,39 +31,73 @@ const Signup = () => {
         });
     };
 
-    // Handle the next button click to move to the next step
-    const handleNext = () => {
-        if (step < 3) {
-            setStep(step + 1);
-        }
+
+    
+    // Send OTP to user's email
+    const sendOtp = () => {
+        axios.post('http://localhost:3001/register-user', {  // Changed here
+            username: formData.username,
+            email: formData.email,
+          })
+          .then(response => {
+            console.log("OTP sent:", response.data);
+            setOtpSent(true); // Set OTP sent status to true
+            setStep(3); // Move to the OTP input step
+          })
+          .catch(error => {
+            console.error("Error sending OTP:", error);
+          });
     };
 
+        // Handle the next button click to move to the next step
+        const handleNext = () => {
+            if (step < 4) {
+                if (step === 2 && !otpSent) {
+                    sendOtp(); // Send OTP on step 2 if not already sent
+                } else {
+                    setStep(step + 1);
+                }
+            }
+        };
+    
+    // Verify the OTP
+    const verifyOtp = () => {
+        console.log("Sending OTP:", formData.otp); // Log the OTP being sent
+        axios.post('http://localhost:3001/verify-otp', {
+            email: formData.email,
+            otp: formData.otp
+        })
+        .then(response => {
+            if (response.data.success) {
+                setStep(step + 1); // Proceed to password step if OTP is correct
+            } else {
+                alert("Invalid OTP. Please try again.");
+            }
+        })
+        .catch(error => {
+            console.error('Error verifying OTP:', error);
+        });
+    };
+    
     // Handle the signup submission on the last step
     const handleSignup = (e) => {
         e.preventDefault();
-        // Check if passwords match
-        if (formData.password !== formData.confirmPassword) {
-            alert("Passwords do not match");
-            return;
-        }
-
-        // Send signup data to backend
-        axios.post('http://localhost:3001/register', {
-            username: formData.username,
-            email: formData.email,
-            dob: formData.dob,
-            gender: formData.gender,
-            password: formData.password
+    
+        // Ensure the password is set after OTP verification
+        axios.post('http://localhost:3001/set-password', {
+            email: formData.email, // User's email
+            password: formData.password // User's password
         })
         .then(response => {
-            console.log(response);
-            // After successful signup, navigate to the login page
+            console.log(response.data);
+            // Handle successful registration (e.g., navigate to the login page)
             navigate('/login');
         })
         .catch(error => {
-            console.error('There was an error!', error);
+            console.error('There was an error!', error.response.data); // Log the error response
         });
     };
+    
 
     // Handle login redirection
     const handleLoginClick = () => {
@@ -123,12 +161,29 @@ const Signup = () => {
                                 </select>
                                 
                                 <button type="button" onClick={handleNext}>
-                                    Next
+                                    Send OTP
                                 </button>
                             </>
                         )}
 
-                        {step === 3 && (
+                        {step === 3 && otpSent && (
+                            <>
+                                <label>Enter OTP</label>
+                                <input
+                                    type="text"
+                                    name="otp"
+                                    placeholder="Enter the OTP sent to your email"
+                                    value={formData.otp}
+                                    onChange={handleChange}
+                                />
+
+                                <button type="button" onClick={verifyOtp}>
+                                    Verify OTP
+                                </button>
+                            </>
+                        )}
+
+                        {step === 4 && (
                             <>
                                 <label>Password</label>
                                 <input
