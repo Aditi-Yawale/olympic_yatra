@@ -1,5 +1,7 @@
 <div align="center">
 
+![Olympic Yatra Logo](https://github.com/Aditi-Yawale/olympic_yatra/blob/main/src/logo.png)
+
 <h2> Dive into the World of Olympics with Olympic Yatra </h2>
 
 Explore Olympic data like never before. Analyze trends, visualize statistics, and discover insights with an interactive dashboard based on the MERN stack integrated with Python and Apache Spark.
