@@ -7,6 +7,8 @@ const Header3 = () => {
       <div className="header-left">
         <Link to="/athletedashboard">
           <img src="Olympic_flag.png" alt="Logo" className="logo" />
+          <h2 className="site-title">Olympic Yatra</h2>
+
         </Link>
       </div>
       <div className="header-right">

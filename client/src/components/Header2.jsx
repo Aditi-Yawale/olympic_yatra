@@ -22,6 +22,8 @@ const Header2 = () => {
     <header className='header'>
       <div className="header-left">
         <img src="Olympic_flag.png" alt="Logo" className="logo" />
+        <h2 className="site-title">Olympic Yatra</h2>
+
       </div>
       <div className="header-right">
         <nav className="header-nav">

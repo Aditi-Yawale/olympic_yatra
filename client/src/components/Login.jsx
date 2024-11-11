@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header3 from './Header3';
+import './Login.css'; // Adjust the path if necessary
 
 const Login = () => {
     const [selectedTab, setSelectedTab] = useState('Athlete'); // Athlete login is default
