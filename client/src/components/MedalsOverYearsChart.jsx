@@ -14,8 +14,6 @@ function MedalsOverYearsChart() {
             try {
                 const response = await axios.get('http://localhost:3001/api/medals');
                 const fetchedMedals = response.data;
-
-                // Calculate total medals per year
                 calculateMedalsPerYear(fetchedMedals);
             } catch (error) {
                 console.error("Error fetching medal data:", error);
@@ -26,17 +24,16 @@ function MedalsOverYearsChart() {
     }, []);
 
     const calculateMedalsPerYear = (fetchedMedals) => {
-        const yearCounts = {};
-
-        fetchedMedals.forEach(medal => {
+        const yearCounts = fetchedMedals.reduce((acc, medal) => {
             const year = medal.Year;
             if (year) {
-                yearCounts[year] = (yearCounts[year] || 0) + 1; // Increment medal count for the year
+                acc[year] = (acc[year] || 0) + 1;
             }
-        });
+            return acc;
+        }, {});
 
-        const labels = Object.keys(yearCounts).sort(); // Sort years
-        const counts = labels.map(year => yearCounts[year]); // Align counts with sorted years
+        const labels = Object.keys(yearCounts).sort();
+        const counts = labels.map(year => yearCounts[year]);
         setMedalsData({ labels, counts });
     };
 
@@ -48,10 +45,10 @@ function MedalsOverYearsChart() {
                 data: medalsData.counts,
                 backgroundColor: '#4CAF50',
                 borderColor: '#4CAF50',
-                borderWidth: 1, // Makes the bars outlined
-                borderRadius: 10, // Rounded top edges
-                barPercentage: 1, // Make bars fill the whole space
-                categoryPercentage: 0.8, // Make bars thicker to touch each other
+                borderWidth: 1,
+                borderRadius: 10,
+                barPercentage: 1,
+                categoryPercentage: 0.8,
             },
         ],
     };
@@ -59,14 +56,14 @@ function MedalsOverYearsChart() {
     const options = {
         scales: {
             x: {
-                stacked: true, // Forces the bars to stack close together
+                stacked: true,
                 grid: {
-                    display: false, // Hide the gridlines on the X axis
+                    display: false,
                 },
             },
             y: {
-                stacked: true, // Forces the Y axis to behave for stacked charts
-                beginAtZero: true, // Start the chart at zero
+                stacked: true,
+                beginAtZero: true,
                 grid: {
                     display: true,
                 },
@@ -74,7 +71,7 @@ function MedalsOverYearsChart() {
         },
         plugins: {
             legend: {
-                display: true, // Show or hide legend
+                display: true,
             },
         },
     };

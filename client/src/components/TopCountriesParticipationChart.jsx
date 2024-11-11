@@ -15,9 +15,6 @@ function TopCountriesParticipationChart() {
                 const response = await axios.get('http://localhost:3001/api/top-countries');
                 const fetchedCountries = response.data;
 
-                // Log fetched data for debugging
-                console.log("Fetched countries:", fetchedCountries);
-
                 // Calculate country participation
                 calculateParticipation(fetchedCountries);
             } catch (error) {
